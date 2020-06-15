@@ -48,6 +48,7 @@ public struct EndpointInfo:Hashable {
         hasher.combine(image)
         hasher.combine(driverOwner)
         hasher.combine(midiUniqueID)
+        hasher.combine(midiPortRef)
         // midiPortRef is not added into the hash because midiPortRef is changing with every app launch
     }
     
