@@ -7,7 +7,7 @@
 //
 
 /// MIDI Endpoint Information
-public struct EndpointInfo:Hashable {
+public struct EndpointInfo:Hashable, Codable {
 
     /// Unique name
     public var name = ""
@@ -49,9 +49,28 @@ public struct EndpointInfo:Hashable {
         hasher.combine(driverOwner)
         hasher.combine(midiUniqueID)
         hasher.combine(midiPortRef)
-        // midiPortRef is not added into the hash because midiPortRef is changing with every app launch
     }
     
+    /// init
+    public init(name:String,
+         displayName:String,
+         model:String,
+         manufacturer:String,
+         image:String,
+         driverOwner:String,
+         midiUniqueID: MIDIUniqueID,
+         midiEndpointRef:MIDIEndpointRef,
+         midiPortRef:MIDIPortRef? = nil ) {
+        self.name = name
+        self.displayName = displayName
+        self.model = model
+        self.manufacturer = manufacturer
+        self.image = image
+        self.driverOwner = driverOwner
+        self.midiUniqueID = midiUniqueID
+        self.midiEndpointRef = midiEndpointRef
+        self.midiPortRef = midiPortRef
+    }
 }
 
 extension Collection where Iterator.Element == MIDIEndpointRef {
