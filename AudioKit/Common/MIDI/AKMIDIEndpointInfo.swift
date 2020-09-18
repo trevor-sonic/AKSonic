@@ -30,15 +30,10 @@ public struct EndpointInfo:Hashable, Codable {
     public var midiUniqueID: MIDIUniqueID
 
     /// MIDIEndpointRef
-
     public var midiEndpointRef: MIDIEndpointRef
 
     /// MIDIPortRef (this will be set|unset when input|output open|close)
     public var midiPortRef: MIDIPortRef?
-
-    
-    /// MIDIPortRef (this will be set|unset when input|output open|close)
-    public var midiPortRef:MIDIPortRef?
     
     /// Equatable
     public static func == (lhs: EndpointInfo, rhs: EndpointInfo) -> Bool {
