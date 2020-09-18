@@ -7,9 +7,7 @@
 //
 
 /// MIDI Endpoint Information
-
 public struct EndpointInfo:Hashable, Codable {
-
 
     /// Unique name
     public var name = ""
@@ -39,8 +37,11 @@ public struct EndpointInfo:Hashable, Codable {
     public var midiPortRef: MIDIPortRef?
 
     
+    /// MIDIPortRef (this will be set|unset when input|output open|close)
+    public var midiPortRef:MIDIPortRef?
+    
     /// Equatable
-    public func == (lhs: EndpointInfo, rhs: EndpointInfo) -> Bool {
+    public static func == (lhs: EndpointInfo, rhs: EndpointInfo) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
     /// Hashable
@@ -54,18 +55,17 @@ public struct EndpointInfo:Hashable, Codable {
         hasher.combine(midiUniqueID)
         hasher.combine(midiPortRef)
     }
-
     
     /// init
-    public init(name: String,
-         displayName: String,
-         model: String,
-         manufacturer: String,
-         image: String,
-         driverOwner: String,
-         midiUniqueID:  MIDIUniqueID,
-         midiEndpointRef: MIDIEndpointRef,
-         midiPortRef: MIDIPortRef? = nil ) {
+    public init(name:String,
+         displayName:String,
+         model:String,
+         manufacturer:String,
+         image:String,
+         driverOwner:String,
+         midiUniqueID: MIDIUniqueID,
+         midiEndpointRef:MIDIEndpointRef,
+         midiPortRef:MIDIPortRef? = nil ) {
 
         self.name = name
         self.displayName = displayName
